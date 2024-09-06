@@ -5,12 +5,29 @@ using UnityEngine.EventSystems;
 
 public class MenuController : MonoBehaviour
 {
-    [SerializeField] private Toggle effectsToggle;
-    [SerializeField] private Toggle musicToggle;
-    [SerializeField] private Button[] Levels;
+    [SerializeField]
+    private Toggle effectsToggle;
+    [SerializeField] 
+    private Toggle musicToggle;
 
-    [SerializeField] private AudioSource musicSource;    
-    [SerializeField] private AudioSource effectSource;
+    [Space(13)]
+    
+    [SerializeField] 
+    private AudioSource musicSource;    
+    [SerializeField] 
+    private AudioSource effectSource;
+
+    [Space(13)] 
+    
+    [SerializeField] 
+    private GameObject levelsPanel;
+    [SerializeField] 
+    private GameObject settingsPanel;
+    [SerializeField] 
+    private GameObject exitPanel;
+    [SerializeField] 
+    private GameObject mainPanel;
+    
     private void Awake()
     {
         InitSettings();
@@ -18,7 +35,7 @@ public class MenuController : MonoBehaviour
 
     public void OnStart(int level)
     {
-        SceneManager.LoadScene(level);
+        SceneManager.LoadScene("Level" + level);
         Time.timeScale = 1;
     }
 
@@ -73,5 +90,46 @@ public class MenuController : MonoBehaviour
         musicSource.mute = num == 1 ? true : false;
         PlayerPrefs.SetInt("Music", num);
         Debug.Log("Music is " + num);
+    }
+
+    public void OpenLevelsPanel()
+    {
+        levelsPanel.SetActive(true);
+        mainPanel.SetActive(false);
+    }
+
+    public void CloseLevelsPanel()
+    {
+        levelsPanel.SetActive(false);
+        mainPanel.SetActive(true);
+    }
+
+    public void OpenSettingsButton()
+    {
+        settingsPanel.SetActive(true);
+        mainPanel.SetActive(false);
+    }
+
+    public void CloseSettingsButton()
+    {
+        settingsPanel.SetActive(false);
+        mainPanel.SetActive(true);
+    }
+
+    public void OpenExitPanel()
+    {
+        mainPanel.SetActive(false);
+        exitPanel.SetActive(true);
+    }
+
+    public void CloseExitPanel()
+    {
+        mainPanel.SetActive(true);
+        exitPanel.SetActive(false);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
