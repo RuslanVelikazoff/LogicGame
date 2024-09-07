@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PausePanel
+  m_Name: LosePanel
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -40,7 +40,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Pause/ContinueButton
+    path: Lose/RestartButton
   - curve:
       serializedVersion: 2
       m_Curve:
@@ -65,14 +65,14 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Pause/MenuButton
+    path: Lose/MenuButton
   m_FloatCurves:
   - curve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 2278
+        value: 2284
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -92,26 +92,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Pause
-    classID: 224
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_AnchoredPosition.x
-    path: Pause
+    path: Lose
     classID: 224
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -123,29 +104,22 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1890223524
+      path: 411624953
       attribute: 3
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2578038023
+      path: 2866190260
       attribute: 3
       script: {fileID: 0}
       typeID: 4
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 375111145
+      path: 2328300390
       attribute: 538195251
-      script: {fileID: 0}
-      typeID: 224
-      customType: 28
-      isPPtrCurve: 0
-    - serializedVersion: 2
-      path: 375111145
-      attribute: 1460864421
       script: {fileID: 0}
       typeID: 224
       customType: 28
@@ -197,7 +171,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Pause/ContinueButton
+    path: Lose/RestartButton
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -225,7 +199,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Pause/ContinueButton
+    path: Lose/RestartButton
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -253,7 +227,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Pause/ContinueButton
+    path: Lose/RestartButton
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -281,7 +255,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.x
-    path: Pause/MenuButton
+    path: Lose/MenuButton
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -309,7 +283,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.y
-    path: Pause/MenuButton
+    path: Lose/MenuButton
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -337,7 +311,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalScale.z
-    path: Pause/MenuButton
+    path: Lose/MenuButton
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -345,7 +319,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 2278
+        value: 2284
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -365,26 +339,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Pause
-    classID: 224
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_AnchoredPosition.x
-    path: Pause
+    path: Lose
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []

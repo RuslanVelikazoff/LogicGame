@@ -7,18 +7,45 @@ using UnityEngine.EventSystems;
 
 public class GameUI : MonoBehaviour
 {
-    [Header("UI")]
-    [SerializeField] private Button pauseButton;
-    [SerializeField] private Button nextLevelButton;
-    [SerializeField] private Button restartButton;
-    [SerializeField] private Button mainMenuButton;
-    [SerializeField] private Button resumeButton;
-    [SerializeField] private GameObject pausePanel;
-    [SerializeField] private TMP_Text finalText;
+    [Header("Pause Panel")] 
+    [SerializeField] 
+    private Button pauseButton;
+    [SerializeField]
+    private Button continueButton;
+    [SerializeField] 
+    private Button menuPauseButton;
+    [SerializeField] 
+    private GameObject pausePanel;
 
-    [SerializeField] private Slider scoreSlider;
+    [Space(13)] 
+    
+    [Header("Lose Panel")]
+    [SerializeField]
+    private GameObject losePanel;
+    [SerializeField]
+    private Button restartButton;
+    [SerializeField] 
+    private Button menuLoseButton;
 
-    [SerializeField] int scoreToWin, currentScore, numToBreak, maxBreak;
+    [Space(13)] 
+    
+    [Header("Win Panel")] 
+    [SerializeField]
+    private GameObject winPanel;
+    [SerializeField] 
+    private Button nextLevelButton;
+    [SerializeField] 
+    private Button menuWinButton;
+    [SerializeField] 
+    private TextMeshProUGUI timerText;
+    
+    [Space(13)]
+
+    [SerializeField]
+    private Slider scoreSlider;
+
+    [SerializeField] 
+    int scoreToWin, currentScore, numToBreak, maxBreak;
 
     public static GameUI Instance;
 
@@ -29,11 +56,7 @@ public class GameUI : MonoBehaviour
 
     private void Start()
     {
-        restartButton.onClick.AddListener(() => OnRestart());
-        mainMenuButton.onClick.AddListener(() => OnMainMenu());
-        resumeButton.onClick.AddListener(() => OnResume()); 
-        pauseButton.onClick.AddListener(() => OnPause());
-        nextLevelButton.onClick.AddListener(() => OnNextLevel());
+        PausePanelButtonClickAction();
 
         scoreSlider.maxValue = scoreToWin;
         scoreSlider.minValue = 0;
@@ -48,50 +71,128 @@ public class GameUI : MonoBehaviour
         }
     }
 
-    public IEnumerator OnWin(string text)
+    private void PausePanelButtonClickAction()
+    {
+        if (pauseButton != null)
+        {
+            pauseButton.onClick.RemoveAllListeners();
+            pauseButton.onClick.AddListener(() =>
+            {
+                OnPause();
+            });
+        }
+
+        if (continueButton != null)
+        {
+            continueButton.onClick.RemoveAllListeners();
+            continueButton.onClick.AddListener(() =>
+            {
+                OnResume();
+            });
+        }
+
+        if (menuPauseButton != null)
+        {
+            menuPauseButton.onClick.RemoveAllListeners();
+            menuPauseButton.onClick.AddListener(() =>
+            {
+                OnMainMenu();
+            });
+        }
+    }
+
+    private void LosePanelButtonClickAction()
+    {
+        if (restartButton != null)
+        {
+            restartButton.onClick.RemoveAllListeners();
+            restartButton.onClick.AddListener(() =>
+            { 
+                OnRestart();  
+            });
+        }
+
+        if (menuLoseButton != null)
+        {
+            menuLoseButton.onClick.RemoveAllListeners();
+            menuLoseButton.onClick.AddListener(() =>
+            {
+                OnMainMenu();
+            });
+        }
+    }
+
+    private void WinPanelButtonClickAction()
+    {
+        if (nextLevelButton != null)
+        {
+            nextLevelButton.onClick.RemoveAllListeners();
+            nextLevelButton.onClick.AddListener(() =>
+            {
+                OnNextLevel();
+            });
+        }
+
+        if (menuWinButton != null)
+        {
+            menuWinButton.onClick.RemoveAllListeners();
+            menuWinButton.onClick.AddListener(() =>
+            {
+                OnMainMenu();
+            });
+        }
+    }
+
+    public IEnumerator OnWin()
     {
         if(Time.timeScale == 1)
         {
-            resumeButton.gameObject.SetActive(false);
             if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings - 1)
             {
-                Debug.Log(SceneManager.sceneCountInBuildSettings);
-                Debug.Log(SceneManager.GetActiveScene().buildIndex);
-                restartButton.gameObject.SetActive(false);
                 nextLevelButton.gameObject.SetActive(true);
             }
             else
             {
-
-                restartButton.gameObject.SetActive(true);
                 nextLevelButton.gameObject.SetActive(false);
             }
 
             yield return new WaitForSeconds(0.5f);
-            pausePanel.SetActive(true);
+            winPanel.SetActive(true);
             VolumeController.Instance.PlaySound(VolumeController.Sounds.LevelComplete);
+            
+            yield return new WaitForSeconds(1f);
+            
             Time.timeScale = 0;
-
-            finalText.text = $"{text}";
+            
+            WinPanelButtonClickAction();
+            //TimerText
             yield return null;
         }
     }
 
-    public IEnumerator OnLoseGame(string text)
+    public IEnumerator OnLoseGame()
     {
         if (Time.timeScale == 1)
         {
-            resumeButton.gameObject.SetActive(false);
-            restartButton.gameObject.SetActive(true);
-            nextLevelButton.gameObject.SetActive(false);
-            yield return new WaitForSeconds(0.5f);
-            pausePanel.SetActive(true);
+            losePanel.SetActive(true);
+            LosePanelButtonClickAction();
             VolumeController.Instance.PlaySound(VolumeController.Sounds.Lose);
+            
+            yield return new WaitForSeconds(1f);
+            
             Time.timeScale = 0;
-
-            finalText.text = $"{text}";
+            
             yield return null;
         }
+    }
+
+    public IEnumerator OnPauseGame()
+    {
+        pausePanel.SetActive(true);
+        
+        yield return new WaitForSeconds(1f);
+
+        Time.timeScale = 0f;
     }
 
     public void IncreaseBreakCount()
@@ -115,12 +216,12 @@ public class GameUI : MonoBehaviour
 
     public void OnLose()
     {
-        StartCoroutine(OnLoseGame("Try Again"));
+        StartCoroutine(OnLoseGame());
     }
 
     public void WaitOnWin()
     {
-        StartCoroutine(OnWin("Level Complete!"));
+        StartCoroutine(OnWin());
     }
 
     private void OnRestart()
@@ -142,10 +243,7 @@ public class GameUI : MonoBehaviour
 
     private void OnPause()
     {
-        pausePanel.gameObject.SetActive(true);
-        nextLevelButton.gameObject .SetActive(false);
-        finalText.text = "Pause";
-        Time.timeScale = 0;
+        StartCoroutine(OnPauseGame());
     }
 
     private void OnResume()
