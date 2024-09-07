@@ -147,6 +147,7 @@ public class GameUI : MonoBehaviour
     {
         if(Time.timeScale == 1)
         {
+            timerText.text = TimerPanel.Instance.GetTimerText();
             if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings - 1)
             {
                 nextLevelButton.gameObject.SetActive(true);
@@ -165,7 +166,6 @@ public class GameUI : MonoBehaviour
             Time.timeScale = 0;
             
             WinPanelButtonClickAction();
-            //TimerText
             yield return null;
         }
     }
@@ -227,18 +227,20 @@ public class GameUI : MonoBehaviour
     private void OnRestart()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        var currentScene = SceneManager.GetActiveScene();
+        Loader.Load(currentScene.name);
     } 
     
     private void OnNextLevel()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        int nextLevelIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        Loader.Load("Level" + nextLevelIndex);
     }
     private void OnMainMenu()
     {
         Time.timeScale = 0;
-        SceneManager.LoadScene(0);
+        Loader.Load("Menu");
     }
 
     private void OnPause()

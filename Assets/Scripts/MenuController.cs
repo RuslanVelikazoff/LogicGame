@@ -35,7 +35,7 @@ public class MenuController : MonoBehaviour
 
     public void OnStart(int level)
     {
-        SceneManager.LoadScene("Level" + level);
+        Loader.Load("Level" + level);
         Time.timeScale = 1;
     }
 

@@ -1414,7 +1414,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.00012207, y: -80.492}
+  m_AnchoredPosition: {x: -3.1287e-10, y: -103.56}
   m_SizeDelta: {x: 548.6876, y: 106.594}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3788516841133493415
@@ -2769,6 +2769,7 @@ GameObject:
   - component: {fileID: 4936813949002512972}
   - component: {fileID: 3638031304801538585}
   - component: {fileID: 584470319625748861}
+  - component: {fileID: 6212146313488743115}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -2794,7 +2795,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120, y: -73.390015}
+  m_AnchoredPosition: {x: 108.28, y: -96.463}
   m_SizeDelta: {x: 216.55951, y: 92.39905}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3638031304801538585
@@ -2835,6 +2836,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6212146313488743115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8908745721799052986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b775b413d6e2f4b8578b195352afc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 990807862467796757}
 --- !u!1 &9140128288227765467
 GameObject:
   m_ObjectHideFlags: 0
