@@ -148,7 +148,7 @@ public class GameUI : MonoBehaviour
         if(Time.timeScale == 1)
         {
             timerText.text = TimerPanel.Instance.GetTimerText();
-            if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings - 1)
+            if (SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings - 2)
             {
                 nextLevelButton.gameObject.SetActive(true);
             }
